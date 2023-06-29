@@ -1,0 +1,23 @@
+{
+  "name": "juhasznikolettv/duedatecalculator",
+  "description": "Due Date Calculator",
+  "type": "library",
+  "require-dev": {
+    "phpunit/phpunit": "10.*",
+    "friendsofphp/php-cs-fixer": "2.*"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "juhasznikolettv",
+      "email": "juhasz.nikolett.v@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "JNV\\DueDateCalculator\\": "src/",
+      "JNV\\Tests\\DueDateCalculator\\": "tests/"
+    }
+  },
+  "require": {}
+}
