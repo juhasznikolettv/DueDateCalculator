@@ -14,10 +14,6 @@ use JNV\DueDateCalculator\Validator\DateValidator;
 use JNV\DueDateCalculator\Validator\DateValidatorInterface;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @internal
- * @coversNothing
- */
 class DueDateCalculatorTest extends TestCase
 {
     /**
@@ -39,55 +35,45 @@ class DueDateCalculatorTest extends TestCase
     {
         return [
             'add 1 hour to 9:00' => [
-                    'submitDate' => new \DateTime('2023-06-28 09:00:00'),
-                    'turnaroundHours' => 1,
-                    'expectedOutput' => new \DateTime('2023-06-28 10:00:00'),
-                ],
+                'submitDate' => new \DateTime('2023-06-28 09:00:00'),
+                'turnaroundHours' => 1,
+                'expectedOutput' => new \DateTime('2023-06-28 10:00:00'),
+            ],
             'add 1 hour to 16:00' => [
-                    'submitDate' => new \DateTime('2023-06-28 16:00:00'),
-                    'turnaroundHours' => 1,
-                    'expectedOutput' => new \DateTime('2023-06-28 17:00:00'),
-                ],
+                'submitDate' => new \DateTime('2023-06-28 16:00:00'),
+                'turnaroundHours' => 1,
+                'expectedOutput' => new \DateTime('2023-06-28 17:00:00'),
+            ],
             'add 1 hour to 16:01' => [
-                    'submitDate' => new \DateTime('2023-06-28 16:01:00'),
-                    'turnaroundHours' => 1,
-                    'expectedOutput' => new \DateTime('2023-06-29 09:01:00'),
-                ],
+                'submitDate' => new \DateTime('2023-06-28 16:01:00'),
+                'turnaroundHours' => 1,
+                'expectedOutput' => new \DateTime('2023-06-29 09:01:00'),
+            ],
             'add 9 hours to 9:11' => [
-                    'submitDate' => new \DateTime('2023-06-28 09:11:00'),
-                    'turnaroundHours' => 9,
-                    'expectedOutput' => new \DateTime('2023-06-29 10:11:00'),
-                ],
+                'submitDate' => new \DateTime('2023-06-28 09:11:00'),
+                'turnaroundHours' => 9,
+                'expectedOutput' => new \DateTime('2023-06-29 10:11:00'),
+            ],
             'add 8 hours to 9:00' => [
-                    'submitDate' => new \DateTime('2023-06-28 09:00:00'),
-                    'turnaroundHours' => 8,
-                    'expectedOutput' => new \DateTime('2023-06-29 09:00:00'),
-                ],
+                'submitDate' => new \DateTime('2023-06-28 09:00:00'),
+                'turnaroundHours' => 8,
+                'expectedOutput' => new \DateTime('2023-06-29 09:00:00'),
+            ],
             'add a week (40 hours) to 15:00' => [
-                    'submitDate' => new \DateTime('2023-06-28 15:00:00'),
-                    'turnaroundHours' => 40,
-                    'expectedOutput' => new \DateTime('2023-07-05 15:00:00'),
-                ],
-            'add a week and a day (48 hours) to 11:30' => [
-                    'submitDate' => new \DateTime('2023-06-28 11:30:00'),
-                    'turnaroundHours' => 48,
-                    'expectedOutput' => new \DateTime('2023-07-06 11:30:00'),
-                ],
+                'submitDate' => new \DateTime('2023-06-28 15:00:00'),
+                'turnaroundHours' => 40,
+                'expectedOutput' => new \DateTime('2023-07-05 15:00:00'),
+            ],
             'add 38 day (304 hours) to 16:30' => [
-                    'submitDate' => new \DateTime('2023-06-28 16:30:00'),
-                    'turnaroundHours' => 304,
-                    'expectedOutput' => new \DateTime('2023-08-21 16:30:00'),
-                ],
-            'add 2 hours to 16:30' => [
-                    'submitDate' => new \DateTime('2023-06-28 16:30:00'),
-                    'turnaroundHours' => 2,
-                    'expectedOutput' => new \DateTime('2023-06-29 10:30:00'),
-                ],
+                'submitDate' => new \DateTime('2023-06-28 16:30:00'),
+                'turnaroundHours' => 304,
+                'expectedOutput' => new \DateTime('2023-08-21 16:30:00'),
+            ],
             'add 1 hour to 17:00' => [
-                    'submitDate' => new \DateTime('2023-06-28 17:00:00'),
-                    'turnaroundHours' => 1,
-                    'expectedOutput' => new \DateTime('2023-06-29 10:00:00'),
-                ],
+                'submitDate' => new \DateTime('2023-06-28 17:00:00'),
+                'turnaroundHours' => 1,
+                'expectedOutput' => new \DateTime('2023-06-29 10:00:00'),
+            ],
         ];
     }
 

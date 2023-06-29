@@ -12,18 +12,18 @@ use JNV\DueDateCalculator\Validator\DateValidatorInterface;
 
 class DueDateCalculator
 {
-    private DateValidatorInterface $submitDateValidator;
+    private DateValidatorInterface $dateValidator;
 
-    public function __construct(DateValidatorInterface $submitDateValidator)
+    public function __construct(DateValidatorInterface $dateValidator)
     {
-        $this->submitDateValidator = $submitDateValidator;
+        $this->dateValidator = $dateValidator;
     }
 
     public function calculateDueDate(DateTimeInterface $submitDate, int $turnAroundHours): DateTimeInterface
     {
         $this->validateInputData($submitDate, $turnAroundHours);
 
-        $resultDate = $submitDate;
+        $resultDate = new \DateTime($submitDate->format('Y-m-d H:i:s'), $submitDate->getTimezone());
 
         $leftOverHours = $this->addWholeDaysToSubmitDate($resultDate, $turnAroundHours);
 
@@ -34,25 +34,25 @@ class DueDateCalculator
         return $this->addRemainingHoursToSubmitDate($resultDate, $leftOverHours);
     }
 
-    private function validateInputData(DateTimeInterface $submitDate, int $turnAroundHours): void
+    private function validateInputData(DateTimeInterface $resultDate, int $turnAroundHours): void
     {
-        $this->submitDateValidator->validate($submitDate);
+        $this->dateValidator->validate($resultDate);
 
         if (0 >= $turnAroundHours) {
             throw new InvalidTurnaroundHoursException(
                 sprintf(
-                     'Turnaround hours should be a positive integer, %s provided',
-                     $turnAroundHours
-                 )
+                    'Turnaround hours should be a positive integer, %s provided',
+                    $turnAroundHours
+                )
             );
         }
     }
 
-    private function addWholeDaysToSubmitDate(DateTimeInterface $submitDate, int $turnAroundHours): int
+    private function addWholeDaysToSubmitDate(DateTimeInterface $resultDate, int $turnAroundHours): int
     {
         $wholeDaysCount = intdiv($turnAroundHours, WorkintTimeConfig::WORKING_HOUR_COUNT_IN_A_DAY);
 
-        $submitDate->modify("+{$wholeDaysCount} weekdays");
+        $resultDate->modify("+{$wholeDaysCount} weekdays");
 
         return $turnAroundHours % WorkintTimeConfig::WORKING_HOUR_COUNT_IN_A_DAY;
     }
@@ -71,9 +71,9 @@ class DueDateCalculator
             }
 
             try {
-                $this->submitDateValidator->validate($resultDate);
+                $this->dateValidator->validate($resultDate);
                 $resultDate->modify('+1 hour');
-                $this->submitDateValidator->validate($resultDate);
+                $this->dateValidator->validate($resultDate);
             } catch (AbstractInvalidDateException $exception) {
                 $this->increaseToNextDay($resultDate);
             }

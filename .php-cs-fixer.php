@@ -12,7 +12,6 @@ $config = new PhpCsFixer\Config();
 $config
     ->setRiskyAllowed(true)
     ->setRules([
-        '@PhpCsFixer' => true,
         'array_indentation' => true,
         'array_syntax' => [
             'syntax' => 'short',

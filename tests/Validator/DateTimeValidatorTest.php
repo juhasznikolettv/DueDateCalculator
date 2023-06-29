@@ -9,10 +9,6 @@ use JNV\DueDateCalculator\Util\WorkintTimeConfig;
 use JNV\DueDateCalculator\Validator\DateTimeValidator;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @internal
- * @coversNothing
- */
 class DateTimeValidatorTest extends TestCase
 {
     /**

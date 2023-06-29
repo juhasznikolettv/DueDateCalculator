@@ -8,10 +8,6 @@ use JNV\DueDateCalculator\Exception\InvalidDateDayException;
 use JNV\DueDateCalculator\Validator\DateDayValidator;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @internal
- * @coversNothing
- */
 class DateDayValidatorTest extends TestCase
 {
     /**

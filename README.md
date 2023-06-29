@@ -1,11 +1,20 @@
 # Due Date Calculator
 
-## What is this project?
+1. [ Requirement ](#requirement)
+2. [ Dependencies ](#dependencies)
+3. [ Tests ](#run-tests)
+4. [ Usage ](#usage)
+    1. [ Parameters ](#parameters)
+    2. [ Return value ](#return-value)
+    3. [ Throws ](#throws)
+5. [ Finishing touches ](#finishing-touches)
+
+## Description
 
 This project was created to provide a solution to implement a due date calculator in an issue tracking
 system. The calculator counts the days only from monday to friday and working hours starting from 9:00 to 17:00.
 
-## Requirement
+## Dependencies
 
 - php7.4 (or newer)
 - installed composer
@@ -42,7 +51,7 @@ You'll have a `JNV\DueDateCalculator\Calculator\DueDateCalculator` class, with t
 public function calculateDueDate(DateTimeInterface $submitDate, int $turnAroundHours): DateTimeInterface
 ```
 
-#### Parameters:
+#### Parameters
 
 **$submitDate** *(DateTimeInterface)*
 
@@ -53,13 +62,13 @@ Please be aware: this parameter can be any DateTimeInterface (DateTime, DateTime
 
 The amount of time that the task takes, expressed in hours. (Must be a positive integer, higher than zero.)
 
-#### Return:
+#### Return value
 
 **DateTimeInterface**
 
 The expected finish date for the task.
 
-#### Throws:
+#### Throws
 
 **InvalidDateDayException**
 

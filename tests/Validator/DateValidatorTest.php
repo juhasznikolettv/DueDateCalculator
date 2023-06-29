@@ -11,10 +11,6 @@ use JNV\DueDateCalculator\Validator\DateTimeValidator;
 use JNV\DueDateCalculator\Validator\DateValidator;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @internal
- * @coversNothing
- */
 class DateValidatorTest extends TestCase
 {
     /**
